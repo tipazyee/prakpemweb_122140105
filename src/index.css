@@ -1,27 +1,27 @@
-/* === CSS My Books dengan Format Penamaan Terstruktur (BEM-style) dan Pink Nude === */
-
+/* --- Palet Warna (Sesuai Preferensi Terakhir) --- */
 :root {
-  --primary-color: #eaa9a0;
-  --secondary-color: #f8b8b0;
-  --accent-color: #ffe3e1;
-  --background-color: #fff5f5;
-  --card-background: #ffffff;
-  --text-color-primary: #4a3f3f;
-  --text-color-secondary: #7c6c6c;
-  --border-color: #e0d1d1;
-  --box-shadow-light: 0 2px 6px rgba(0, 0, 0, 0.05);
-  --box-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --border-radius: 12px;
+  --primary-color: #F48FB1; /* Pink lembut untuk navigasi utama */
+  --secondary-color: #90CAF9; /* Biru lembut sebagai aksen sekunder */
+  --accent-color: #E1BEE7; /* Ungu lembut untuk penekanan */
+  --text-color-primary: #212121; /* Hitam untuk teks utama */
+  --text-color-secondary: #616161; /* Abu-abu gelap untuk teks sekunder */
+  --background-color: #FFFFFF; /* Putih sebagai latar belakang */
+  --card-background: #F5F5F5; /* Abu-abu sangat muda untuk latar belakang kartu/kontainer */
+  --border-color: #E0E0E0; /* Abu-abu terang untuk garis batas */
+  --border-radius: 8px;
+  --box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --box-shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* === Global === */
 body {
   font-family: 'Nunito', sans-serif;
+  line-height: 1.6;
   background-color: var(--background-color);
   color: var(--text-color-primary);
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-align: center; /* Membuat teks di body menjadi tengah (akan dioverride jika perlu) */
 }
 
 .app {
@@ -34,224 +34,260 @@ body {
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
-  background-color: var(--card-background);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-light);
+  text-align: left; /* Mengembalikan perataan teks container menjadi kiri */
 }
 
-/* === Navbar === */
+/* --- Navbar dengan Pink Lembut --- */
 .navbar {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color); /* Pink lembut */
+  color: var(--card-background); /* Teks abu-abu sangat muda atau putih */
   padding: 1rem 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   box-shadow: var(--box-shadow-light);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-.navbar__logo {
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
   font-size: 1.75rem;
   font-weight: bold;
-  color: var(--card-background);
   text-decoration: none;
+  color: var(--card-background); /* Teks abu-abu sangat muda atau putih */
 }
 
-.navbar__menu {
+.navbar-menu {
+  list-style: none;
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
 }
 
-.navbar__link {
-  color: var(--card-background);
+.navbar-item {
+  margin-left: 1.5rem;
+}
+
+.navbar-link {
+  color: var(--card-background); /* Teks abu-abu sangat muda atau putih */
   text-decoration: none;
   padding: 0.75rem 1rem;
   border-radius: var(--border-radius);
-  transition: 0.3s;
-  font-weight: 500;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.navbar__link:hover,
-.navbar__link--active {
-  background-color: rgba(255, 255, 255, 0.2);
+.navbar-link:hover,
+.navbar-link.active {
+  background-color: rgba(255, 255, 255, 0.2); /* Efek hover lebih halus */
+}
+
+.navbar-link.active {
   font-weight: bold;
+  color: var(--card-background); /* Teks abu-abu sangat muda atau putih */
 }
 
-/* === Section Heading === */
-.section__title {
+/* --- Header Daftar Buku (Tengah) --- */
+.daftar-buku-saya-header {
   font-size: 2rem;
   color: var(--secondary-color);
   margin-bottom: 1.5rem;
   font-weight: bold;
-  text-align: center;
+  text-align: center; /* Membuat judul menjadi tengah */
 }
 
-/* === Book Form === */
-.book-form {
-  padding: 25px;
+/* --- Container Tambah Buku Baru (Padding & Tombol Lebih Baik) --- */
+.tambah-buku-baru-container {
+  background-color: var(--card-background);
+  padding: 25px; /* Padding lebih besar */
   margin-bottom: 20px;
   border-radius: var(--border-radius);
-  background-color: var(--card-background);
   box-shadow: var(--box-shadow-light);
 }
 
-.book-form__group {
+.tambah-buku-baru {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 15px;
+  grid-gap: 15px;
   align-items: center;
 }
 
-.book-form__input {
+.tambah-buku-baru .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px; /* Jarak antar input */
+}
+
+.tambah-buku-baru label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-color-primary);
+  margin-bottom: 5px;
+}
+
+.tambah-buku-baru input[type="text"] {
   padding: 10px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: 1rem;
+  color: var(--text-color-primary);
 }
 
-.book-form__button {
+.tambah-buku-baru button {
   background-color: var(--secondary-color);
   color: var(--card-background);
   border: none;
-  padding: 12px 20px;
-  border-radius: 25px;
-  font-size: 1rem;
+  padding: 12px 20px; /* Padding tombol lebih baik */
+  border-radius: 25px; /* Bentuk tombol lebih bagus (rounded) */
   cursor: pointer;
-  box-shadow: var(--box-shadow-light);
-  transition: 0.3s;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.book-form__button:hover {
+.tambah-buku-baru button:hover {
   background-color: var(--primary-color);
-  box-shadow: var(--box-shadow-medium);
 }
 
-/* === Book Filter === */
-.book-filter {
-  padding: 15px;
+/* --- Container Filter Buku --- */
+.filter-buku-container {
   margin-bottom: 20px;
-  border-radius: var(--border-radius);
+  padding: 15px;
   background-color: var(--card-background);
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-light);
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
 }
 
-.book-filter__link {
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.9rem;
+.filter-buku-container label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-color-primary);
+  margin-right: 10px;
+}
+
+.filter-buku {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-buku a {
   text-decoration: none;
   color: var(--secondary-color);
+  font-size: 0.9rem;
+  padding: 8px 15px;
+  border-radius: 20px;
   border: 1px solid var(--secondary-color);
-  transition: 0.3s;
-  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
-.book-filter__link:hover,
-.book-filter__link--active {
-  background-color: var(--accent-color);
-  color: var(--text-color-primary);
-  border-color: var(--accent-color);
+.filter-buku a:hover,
+.filter-buku a.active {
+  background-color: var(--secondary-color);
+  color: var(--card-background);
+  border-color: var(--secondary-color);
   font-weight: bold;
+  box-shadow: var(--box-shadow-light);
 }
 
-/* === Book List === */
-.book-list {
-  padding: 20px 0;
+.filter-buku a.active {
+  /* Gaya tambahan untuk label aktif */
 }
 
-.book-item {
+/* --- Container Daftar Buku --- */
+.daftar-buku-container {
+  /* Gaya latar belakang atau padding untuk seluruh daftar buku */
+}
+
+/* --- Container Setiap Item Buku --- */
+.item-buku-container {
   background-color: var(--card-background);
   padding: 20px;
   margin-bottom: 15px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-light);
-  transition: 0.3s;
 }
 
-.book-item:hover {
-  box-shadow: var(--box-shadow-medium);
-  transform: translateY(-2px);
-}
-
-.book-item__row {
+.item-buku {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 15px;
+  grid-gap: 15px;
   align-items: center;
 }
 
-@media (max-width: 600px) {
-  .book-item__row {
-    grid-template-columns: 1fr;
-  }
-}
-
 .book-info {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 5px 10px;
+  display: grid; /* Menggunakan grid untuk label dan nilai */
+  grid-template-columns: auto 1fr; /* Label | Nilai */
+  grid-gap: 5px 10px; /* Jarak baris dan kolom */
 }
 
-.book-info__label {
+.book-info .info-group label {
   font-weight: bold;
   font-size: 0.9rem;
   color: var(--text-color-secondary);
+  justify-self: start; /* Agar label rata kiri */
 }
 
-.book-info__value {
+.book-info .judul-buku,
+.book-info .status-buku {
   font-size: 1rem;
   color: var(--text-color-primary);
+  justify-self: start; /* Agar nilai rata kiri */
 }
 
-.book-info__status {
-  display: inline-block;
+.book-info .status-buku {
+  background-color: var(--accent-color);
+  color: var(--text-color-primary);
   padding: 4px 8px;
   border-radius: 15px;
   font-weight: bold;
-  background-color: var(--accent-color);
+  display: inline-block;
 }
 
-/* === Status Variants === */
-.book-info__status--dibaca {
+/* Gaya status yang berbeda */
+.status-buku.dibaca {
   background-color: #F8BBD0;
+  color: var(--text-color-primary);
 }
 
-.book-info__status--milik {
+.status-buku.milik {
   background-color: var(--primary-color);
   color: var(--card-background);
 }
 
-.book-info__status--beli {
+.status-buku.beli {
   background-color: var(--secondary-color);
   color: var(--card-background);
 }
 
-/* === Book Actions === */
-.book-action {
+.aksi-buku {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Label di atas dropdown */
+  align-items: flex-start; /* Agar label dan dropdown rata kiri */
   gap: 5px;
-  align-items: flex-start;
 }
 
-.book-action__label {
+.aksi-buku label {
   font-size: 0.9rem;
-  font-weight: bold;
   color: var(--text-color-secondary);
+  font-weight: bold;
 }
 
-.book-action__select {
-  width: 100%;
+.aksi-buku select {
   padding: 8px 12px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: 0.9rem;
   color: var(--text-color-primary);
-  cursor: pointer;
+  width: 100%; /* Agar dropdown selebar container aksi */
+}
+
+/* --- Gaya Tambahan --- */
+h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  color: var(--text-color-primary);
 }
